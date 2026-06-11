@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Listas de Precios - Distribuidora Piselli</title>
+
+<link rel="stylesheet" href="diseño.css">
+
+<style>
+
+.listas-container{
+    max-width:1000px;
+    margin:140px auto 60px;
+    padding:20px;
+}
+
+.listas-card{
+    background:white;
+    border-radius:12px;
+    padding:30px;
+    box-shadow:0 4px 15px rgba(0,0,0,.08);
+}
+
+.listas-title{
+    text-align:center;
+    color:#1e3a5f;
+    margin-bottom:10px;
+}
+
+.listas-subtitle{
+    text-align:center;
+    color:#666;
+    margin-bottom:30px;
+}
+
+.listas-table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.listas-table th{
+    background:#1e3a5f;
+    color:white;
+    padding:15px;
+    text-align:left;
+}
+
+.listas-table td{
+    padding:15px;
+    border-bottom:1px solid #eee;
+}
+
+.listas-table tr:hover{
+    background:#f8f9fa;
+}
+
+.btn-download{
+    background:#e67e22;
+    color:white;
+    padding:10px 16px;
+    border-radius:6px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.btn-download:hover{
+    background:#d35400;
+}
+
+@media(max-width:768px){
+
+    .listas-table{
+        font-size:14px;
+    }
+
+    .btn-download{
+        padding:8px 12px;
+        font-size:13px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="header">
+<div class="container">
+<div class="header-main">
+
+<div class="logo">
+⚙️ Distribuidora Piselli
+</div>
+
+<nav class="nav">
+<a href="index.html">Inicio</a>
+<a href="pedidos.html">Pedidos</a>
+</nav>
+
+</div>
+</div>
+</header>
+
+<div class="listas-container">
+
+<div class="listas-card">
+
+<h1 class="listas-title">
+📄 Listas de Precios Actualizadas
+</h1>
+
+<p class="listas-subtitle">
+Descargue las listas vigentes disponibles para clientes.
+</p>
+
+<table class="listas-table">
+
+<thead>
+<tr>
+<th>Lista</th>
+<th>Actualización</th>
+<th>Formato</th>
+<th>Descarga</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>Lista General</td>
+<td>2/06/2026</td>
+<td>Excel</td>
+<td>
+<a href="listas/lista-general-piselli.xlsx"
+class="btn-download"
+download>
+⬇ Descargar
+</a>
+</td>
+</tr>
+
+<tr>
+<td>Lista Importado</td>
+<td>8/06/2026</td>
+<td>Excel</td>
+<td>
+<a href="listas/lista-importado-piselli.xlsx"
+class="btn-download"
+download>
+⬇ Descargar
+</a>
+</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</body>
+</html>

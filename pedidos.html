@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Pedidos - Distribuidora Piselli</title>
+
+<link rel="stylesheet" href="diseño.css">
+
+</head>
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+<script src="pedidos.js"></script>
+<body>
+
+<header class="header">
+<div class="container">
+<h1 style="color:white; padding:20px 0;">
+📦 Pedidos Online
+</h1>
+</div>
+</header>
+
+<div class="cart-floating" id="cartFloating">
+
+🛒 <span id="cartCount">0</span>
+
+</div>
+
+<section class="section" style="margin-top:120px;">
+
+<div class="container">
+
+<div class="section-header">
+<h2>Pedidos Online</h2>
+<p>Seleccioná productos y armá tu pedido</p>
+</div>
+
+<div class="search-box">
+
+    <input
+    type="text"
+    id="searchInput"
+    placeholder="🔎 Buscar productos..."
+    oninput="searchProducts()">
+
+</div>
+
+<div style="margin-top:15px;">
+
+    <select id="brandFilter" onchange="filterByBrand()">
+
+        <option value="">Todas las marcas</option>
+
+    </select>
+
+</div>
+
+<div class="products-grid" id="productsGrid"></div>
+
+<div id="pagination" class="pagination"></div>
+
+<h2 style="margin-top:60px;">🛒 Carrito</h2>
+
+<div id="cartItems"></div>
+
+<div style="margin-top:30px;">
+
+<input type="text"
+id="clienteNombre"
+placeholder="Tu nombre"
+style="padding:12px; width:300px; max-width:100%;">
+
+<br><br>
+
+<button class="btn btn-primary"
+onclick="enviarPedidoWhatsApp()">
+
+Enviar Pedido
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+</body>
+</html>
