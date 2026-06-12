@@ -240,6 +240,7 @@ async function cargarProductosExcel() {
             marca: item.marca,
             code: String(item.codigo),
             desc: item.descripcion || "",
+            precio: Number(item.precio) || 0,
             badge: item.badge || null
 
         });
@@ -354,48 +355,56 @@ function agregarAlCarrito(code){
         actualizarContadorCarrito();
 }
 
-function renderCarrito(){
+        function renderCarrito(){
 
     const cart = document.getElementById("cartItems");
 
     if(carrito.length === 0){
-
         cart.innerHTML = "<p>El carrito está vacío</p>";
-
         return;
     }
 
-    cart.innerHTML = carrito.map(item => `
+    let total = 0;
 
+    cart.innerHTML = carrito.map(item => {
+
+        const subtotal = item.precio * item.cantidad;
+        total += subtotal;
+
+        return `
         <div class="cart-item">
 
-            <strong>${item.name}</strong>
+            <strong>${item.name}</strong><br>
 
-            <br>
+            Código: ${item.code}<br>
 
-            Código: ${item.code}
+            Precio unitario:
+            $${item.precio.toLocaleString()}<br>
 
-            <br>
+            Cantidad:
+            ${item.cantidad}<br>
 
-            Cantidad: ${item.cantidad}
-
-            <br><br>
+            Subtotal:
+            $${subtotal.toLocaleString()}<br><br>
 
             <button onclick="sumarCantidad('${item.code}')">+</button>
 
             <button onclick="restarCantidad('${item.code}')">-</button>
 
             <button onclick="eliminarDelCarrito('${item.code}')">
-
             Eliminar
-
             </button>
 
         </div>
-
         <hr>
+        `;
+    }).join('') +
 
-    `).join('');
+    `
+    <div style="padding:15px;font-size:20px;font-weight:bold;text-align:right;">
+        TOTAL: $${total.toLocaleString()}
+    </div>
+    `;
 }
 
 function sumarCantidad(code){
@@ -409,6 +418,31 @@ function sumarCantidad(code){
         renderCarrito();
         actualizarContadorCarrito();
     }
+}
+
+function enviarPedidoEmail(){
+
+    let mensaje = "PEDIDO ONLINE\n\n";
+
+    let total = 0;
+
+    carrito.forEach(item => {
+
+        const subtotal = item.precio * item.cantidad;
+
+        total += subtotal;
+
+        mensaje +=
+        `${item.name} - Cod: ${item.code} - Cant: ${item.cantidad} - Subtotal: $${subtotal}\n`;
+
+    });
+
+    mensaje += `\nTOTAL: $${total}`;
+
+    const asunto = "Nuevo Pedido Web";
+
+    window.location.href =
+    `mailto:dist_piselli@yahoo.com.ar?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(mensaje)}`;
 }
 
 function restarCantidad(code){
