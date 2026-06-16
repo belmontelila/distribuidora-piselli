@@ -336,23 +336,30 @@ function agregarAlCarrito(code){
 
     if(!producto) return;
 
-    const existente = carrito.find(p => p.code === code);
+    const cantidadInput =
+        document.getElementById(`qty-${code}`);
+
+    const cantidad =
+        parseInt(cantidadInput.value) || 1;
+
+    const existente =
+        carrito.find(p => p.code === code);
 
     if(existente){
 
-        existente.cantidad++;
+        existente.cantidad += cantidad;
 
     } else {
 
         carrito.push({
             ...producto,
-            cantidad: 1
+            cantidad: cantidad
         });
 
     }
 
     renderCarrito();
-        actualizarContadorCarrito();
+    actualizarContadorCarrito();
 }
 
         function renderCarrito(){
