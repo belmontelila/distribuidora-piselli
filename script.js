@@ -116,7 +116,16 @@ function filtrarRubro(rubro){
     currentPage = 1;
 
     renderProducts(currentList);
+
+    document.getElementById("catalogo").scrollIntoView({
+        behavior: "smooth"
+    });
 }
+
+    currentPage = 1;
+
+    renderProducts(currentList);
+
         // Login Modal
         function openLoginModal() {
             document.getElementById('loginModal').classList.add('active');
