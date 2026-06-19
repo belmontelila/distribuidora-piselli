@@ -18,7 +18,6 @@
 <body>
 <!--prueba-->
     <!-- HEADER -->
-
     <header class="header">
 
         <div class="header-top">
@@ -148,7 +147,7 @@
             <div class="categories-grid">
 
                 <div class="category-card"
-                onclick="filterProducts('construccion')">
+                onclick="filtrarRubro('Construcción')">
 
                     <div class="category-icon">🏗️</div>
 
@@ -161,7 +160,7 @@
                 </div>
 
                 <div class="category-card"
-                onclick="filterProducts('jardineria')">
+                onclick="filtrarRubro('Jardinería')">
 
                     <div class="category-icon">🌱</div>
 
@@ -175,7 +174,7 @@
                 </div>
 
                 <div class="category-card"
-                onclick="filterProducts('cerrajeria')">
+            onclick="filtrarRubro('Cerrajería')">
 
                     <div class="category-icon">🔒</div>
 
@@ -199,7 +198,6 @@
     <section class="section products-section" id="catalogo">
 
         <div class="container">
-
             <div class="section-header">
 
                 <h2>Catálogo de Productos</h2>
@@ -214,35 +212,21 @@
 
             <div class="products-filter">
 
-                <button class="filter-btn active"
-                onclick="filterProducts('todos')">
-
-                    Todos
-
+                <button onclick="filtrarRubro('Construcción')">
+                Construcción
                 </button>
 
-                <button class="filter-btn"
-                onclick="filterProducts('construccion')">
-
-                    Construcción
-
-                </button>
-
-                <button class="filter-btn"
-                onclick="filterProducts('jardineria')">
-
+                <button onclick="filtrarRubro('Jardinería')">
                     Jardinería
-
                 </button>
 
-                <button class="filter-btn"
-                onclick="filterProducts('cerrajeria')">
-
-                    Cerrajería
-
+                <button onclick="filtrarRubro('Cerrajería')">
+                Cerrajería
                 </button>
 
-            </div>
+                <button onclick="filtrarRubro('')">
+                Ver todo
+                </button>
 
             <!-- BUSCADOR -->
 

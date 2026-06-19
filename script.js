@@ -80,35 +80,43 @@ const products = [];
         // Filter Products
      function filterProducts(category) {
 
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.classList.remove('active');
+    currentList = products.filter(product => {
+
+        const rubro = (product.rubro || "")
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "");
+
+        return rubro === category;
     });
-
-    const filtered = category === "todos"
-        ? products
-        : products.filter(p => 
-            (p.rubro || "").toLowerCase() === category
-        );
-
-    currentList = filtered;
 
     currentPage = 1;
 
-    const grid = document.getElementById('productsGrid');
+    renderProducts(currentList);
 
-    grid.style.opacity = '0';
-
-    setTimeout(() => {
-
-        renderProducts(currentList);
-
-        grid.style.opacity = '1';
-
-    }, 200);
-
+    document.getElementById("catalogo")
+        .scrollIntoView({ behavior: "smooth" });
 }
            
+function filtrarRubro(rubro){
 
+    if(rubro === ""){
+
+        currentList = products;
+
+    } else {
+
+        currentList = products.filter(product =>
+            product.rubro &&
+            product.rubro.toLowerCase() === rubro.toLowerCase()
+        );
+
+    }
+
+    currentPage = 1;
+
+    renderProducts(currentList);
+}
         // Login Modal
         function openLoginModal() {
             document.getElementById('loginModal').classList.add('active');
