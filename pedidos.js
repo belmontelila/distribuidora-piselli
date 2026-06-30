@@ -427,30 +427,44 @@ function sumarCantidad(code){
     }
 }
 
-function enviarPedidoEmail(){
+function enviarPedidoWhatsApp() {
 
-    let mensaje = "PEDIDO ONLINE\n\n";
+    if (carrito.length === 0) {
+        alert("El carrito está vacío.");
+        return;
+    }
+
+    let mensaje = "🛒 *NUEVO PEDIDO*\n\n";
 
     let total = 0;
 
     carrito.forEach(item => {
 
         const subtotal = item.precio * item.cantidad;
-
         total += subtotal;
 
         mensaje +=
-        `${item.name} - Cod: ${item.code} - Cant: ${item.cantidad} - Subtotal: $${subtotal}\n`;
+`• ${item.name}
+Código: ${item.code}
+Cantidad: ${item.cantidad}
+Precio: $${item.precio.toLocaleString()}
+Subtotal: $${subtotal.toLocaleString()}
+
+`;
 
     });
 
-    mensaje += `\nTOTAL: $${total}`;
+    mensaje += `💰 *TOTAL: $${total.toLocaleString()}*`;
 
-    const asunto = "Nuevo Pedido Web";
+    const numero = "2216903723";
 
-    window.location.href =
-    `mailto:dist_piselli@yahoo.com.ar?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(mensaje)}`;
+    const url =
+        `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+
+    window.open(url, "_blank");
+
 }
+
 
 function restarCantidad(code){
 
