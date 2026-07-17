@@ -56,7 +56,7 @@ const products = [];
 
             <h3 class="product-name">${product.name}</h3>
 
-            <p class="product-description">${product.desc}</p>
+            
 
             <div class="product-footer">
 
@@ -248,7 +248,6 @@ name:item.nombre,
 rubro:item.rubro,
 marca:item.marca,
 code:String(item.codigo),
-desc: item.descripcion || "",
 badge:item.badge || null
 
 });
@@ -363,7 +362,6 @@ function searchProducts() {
         const nombre = (p.name || "").toLowerCase();
         const marca = (p.marca || "").toLowerCase();
         const codigo = String(p.code || "").toLowerCase();
-        const descripcion = (p.desc || "").toLowerCase();
         const rubro = (p.rubro || "")
         .toLowerCase()
         .normalize("NFD")
@@ -373,7 +371,6 @@ function searchProducts() {
         nombre.includes(text) ||
         marca.includes(text) ||
         codigo.includes(text) ||
-        descripcion.includes(text) ||
         rubro.includes(text)
         );
 

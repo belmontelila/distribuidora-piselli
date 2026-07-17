@@ -98,13 +98,36 @@ function renderProducts(list = products) {
             ${product.name}
         </h3>
 
-        <p class="product-description">
-            ${product.desc}
-        </p>
-
         <div style="margin-top:10px; font-weight:bold; color:#0f172a;">
             $${product.precio || 0}
         </div>
+
+        <div style="margin-top:8px;">
+
+    ${
+        product.stock > 0
+
+        ?
+
+        `<span style="
+            color:#16a34a;
+            font-weight:bold;
+        ">
+        🟢 Disponible
+        </span>`
+
+        :
+
+        `<span style="
+            color:#dc2626;
+            font-weight:bold;
+        ">
+        🔴 Sin stock
+        </span>`
+
+    }
+
+</div>
 
         <div style="margin-top:12px; display:flex; gap:10px; align-items:center;">
 
@@ -120,13 +143,34 @@ function renderProducts(list = products) {
                 border:1px solid #ccc;
             ">
 
-            <button
+            ${
+            product.stock > 0
+
+                ?
+
+            `<button
             class="btn btn-primary"
             onclick="agregarAlCarrito('${product.code}')">
 
                 Agregar
 
-            </button>
+                </button>`
+
+                :
+
+                `<button
+                    class="btn"
+                disabled
+            style="
+            background:#ccc;
+            cursor:not-allowed;
+                ">
+
+                Sin stock
+
+                </button>`
+
+}
 
         </div>
 
@@ -232,18 +276,21 @@ async function cargarProductosExcel() {
 
     json.forEach((item)=>{
 
-        products.push({
+    products.push({
 
-            id: item.id,
-            name: item.nombre,
-            rubro: item.rubro,
-            marca: item.marca,
-            code: String(item.codigo),
-            desc: item.descripcion || "",
-            precio: Number(item.precio) || 0,
-            badge: item.badge || null
+    id: item.id,
+    name: item.nombre,
+    rubro: item.rubro,
+    marca: item.marca,
+    code: String(item.codigo),
+    desc: item.descripcion || "",
+    badge: item.badge || null,
 
-        });
+    precio: Number(item.precio) || 0,
+
+    stock: Number(item.stock) || 0
+
+});
 
     });
 
@@ -311,16 +358,13 @@ function searchProducts() {
         const codigo = String(p.code || "")
             .toLowerCase();
 
-        const descripcion = (p.desc || "")
-            .toLowerCase()
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "");
+
 
         return (
             nombre.includes(text) ||
             marca.includes(text) ||
-            codigo.includes(text) ||
-            descripcion.includes(text)
+            codigo.includes(text) 
+            
         );
 
     });
