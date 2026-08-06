@@ -150,7 +150,7 @@ function renderProducts(list = products) {
 
             `<button
             class="btn btn-primary"
-            onclick="agregarAlCarrito('${product.code}')">
+            onclick="agregarAlCarrito('${product.code}')">me
 
                 Agregar
 
