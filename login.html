@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Acceso Clientes - Distribuidora Piselli
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="diseño.css">
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+    <div class="container">
+
+        <div class="header-main">
+
+            <div class="logo">
+
+                <div class="logo-icon">
+                    ⚙️
+                </div>
+
+                <div>
+                    Distribuidora Piselli
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<section class="section">
+
+
+    <div class="container">
+
+
+        <div
+            class="modal"
+            style="
+                max-width:450px;
+                margin:60px auto;
+                background:white;
+                padding:30px;
+                border-radius:15px;
+            "
+        >
+
+
+            <div class="modal-header">
+
+                <h2>
+                    🔐 Acceso Clientes
+                </h2>
+
+                <p>
+                    Ingresá con tu CUIT y contraseña.
+                </p>
+
+            </div>
+
+
+
+            <form id="loginClienteForm">
+
+
+                <div class="form-group">
+
+                    <label for="cuit">
+                        CUIT
+                    </label>
+
+                    <input
+                        type="text"
+                        id="cuit"
+                        placeholder="30-12345678-9"
+                        required>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Contraseña
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Tu contraseña"
+                        required>
+
+                </div>
+
+
+
+                <div
+                    id="loginError"
+                    class="form-error"
+                    style="display:none;"
+                ></div>
+
+
+
+                <div
+                    id="loginExito"
+                    class="success-message"
+                    style="display:none;"
+                ></div>
+
+
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                    style="
+                        width:100%;
+                        justify-content:center;
+                        margin-top:15px;
+                    "
+                >
+
+                    Ingresar
+
+                </button>
+
+
+            </form>
+
+
+
+            <div
+                style="
+                    text-align:center;
+                    margin-top:20px;
+                "
+            >
+
+                ¿Todavía no tenés una cuenta?
+
+                <br>
+
+                <a href="registro.html">
+
+                    Registrarme
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<script
+    type="module"
+    src="js/login.js">
+</script>
+
+
+</body>
+
+</html>

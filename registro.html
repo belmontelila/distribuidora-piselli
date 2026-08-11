@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Registrarse - Distribuidora Piselli</title>
+
+    <link rel="stylesheet" href="diseño.css">
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="container">
+
+        <div class="header-main">
+
+            <div class="logo">
+                <div class="logo-icon">⚙️</div>
+                <div>Distribuidora Piselli</div>
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="modal"
+             style="
+                max-width:600px;
+                margin:40px auto;
+                background:white;
+                padding:30px;
+                border-radius:15px;
+             ">
+
+            <div class="modal-header">
+
+                <h2>📝 Crear cuenta</h2>
+
+                <p>
+                    Registrate para acceder al catálogo y realizar pedidos.
+                </p>
+
+            </div>
+
+            <form id="registroForm">
+
+                <div class="form-group">
+
+                    <label for="razonSocial">
+                        Razón Social *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="razonSocial"
+                        required
+                        placeholder="Ej: Ferretería San Martín SRL">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="cuit">
+                        CUIT *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="cuit"
+                        required
+                        placeholder="Ej: 30-12345678-9">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="contacto">
+                        Nombre del contacto *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="contacto"
+                        required
+                        placeholder="Nombre y apellido">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email *
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        required
+                        placeholder="correo@empresa.com">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="telefono">
+                        Teléfono *
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="telefono"
+                        required
+                        placeholder="Ej: 11 5555-5555">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="direccion">
+                        Dirección
+                    </label>
+
+                    <input
+                        type="text"
+                        id="direccion"
+                        placeholder="Dirección">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="localidad">
+                        Localidad
+                    </label>
+
+                    <input
+                        type="text"
+                        id="localidad"
+                        placeholder="Localidad">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="provincia">
+                        Provincia
+                    </label>
+
+                    <input
+                        type="text"
+                        id="provincia"
+                        placeholder="Provincia">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Contraseña *
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        required
+                        minlength="6"
+                        placeholder="Mínimo 6 caracteres">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="passwordConfirm">
+                        Confirmar contraseña *
+                    </label>
+
+                    <input
+                        type="password"
+                        id="passwordConfirm"
+                        required
+                        minlength="6"
+                        placeholder="Repetir contraseña">
+
+                </div>
+
+                <div
+                    id="registroError"
+                    class="form-error"
+                    style="display:none;">
+                </div>
+
+                <div
+                    id="registroExito"
+                    class="success-message"
+                    style="display:none;">
+                </div>
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                    style="
+                        width:100%;
+                        justify-content:center;
+                        margin-top:15px;
+                    ">
+
+                    Crear cuenta
+
+                </button>
+
+            </form>
+
+            <div style="
+                text-align:center;
+                margin-top:20px;
+            ">
+
+                ¿Ya tenés una cuenta?
+
+                <a href="index.html">
+                    Iniciar sesión
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<script type="module" src="js/auth.js"></script>
+
+</body>
+
+</html>
