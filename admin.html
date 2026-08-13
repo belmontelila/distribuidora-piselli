@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Administración - Distribuidora Piselli
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="diseño.css">
+
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="container">
+
+        <div class="header-main">
+
+            <div class="logo">
+
+                <div class="logo-icon">
+                    ⚙️
+                </div>
+
+                <div>
+                    Distribuidora Piselli
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<section class="section">
+
+    <div class="container">
+
+        <!-- LOGIN ADMINISTRADOR -->
+
+        <div
+            id="loginAdmin"
+            class="modal"
+            style="
+                max-width:450px;
+                margin:60px auto;
+                background:white;
+                padding:30px;
+                border-radius:15px;
+            "
+        >
+
+            <div class="modal-header">
+
+                <h2>
+                    🔐 Administración
+                </h2>
+
+                <p>
+                    Ingresá con tu email de administrador.
+                </p>
+
+            </div>
+
+
+            <form id="adminLoginForm">
+
+                <div class="form-group">
+
+                    <label for="adminEmail">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="adminEmail"
+                        placeholder="tu@email.com"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="adminPassword">
+                        Contraseña
+                    </label>
+
+                    <input
+                        type="password"
+                        id="adminPassword"
+                        placeholder="Contraseña"
+                        required>
+
+                </div>
+
+
+                <div
+                    id="adminLoginError"
+                    class="form-error"
+                    style="display:none;">
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                    style="
+                        width:100%;
+                        justify-content:center;
+                        margin-top:15px;
+                    "
+                >
+
+                    Ingresar
+
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- PANEL DE ADMINISTRACIÓN -->
+
+        <div
+            id="panelAdmin"
+            style="display:none;"
+        >
+
+            <div
+                style="
+                    display:flex;
+                    justify-content:space-between;
+                    align-items:center;
+                    margin-bottom:30px;
+                    gap:15px;
+                    flex-wrap:wrap;
+                "
+            >
+
+                <div>
+
+                    <h1>
+                        👨‍💼 Administración
+                    </h1>
+
+                    <p>
+                        Gestión de clientes
+                    </p>
+
+                </div>
+
+
+                <button
+                    id="cerrarSesion"
+                    class="btn btn-outline">
+
+                    🚪 Cerrar sesión
+
+                </button>
+
+            </div>
+
+
+            <div
+                id="mensajeAdmin"
+                class="form-error"
+                style="display:none;">
+            </div>
+
+
+            <div
+                id="cargando"
+                style="
+                    text-align:center;
+                    padding:30px;
+                "
+            >
+
+                Cargando clientes...
+
+            </div>
+
+
+            <div id="clientesContainer"
+                 style="display:none;">
+
+                <!-- PENDIENTES -->
+
+                <h2>
+                    ⏳ Clientes pendientes
+                </h2>
+
+                <div
+                    id="clientesPendientes"
+                    style="
+                        margin-bottom:45px;
+                    "
+                >
+                </div>
+
+
+                <!-- ACTIVOS -->
+
+                <h2>
+                    ✅ Clientes activos
+                </h2>
+
+                <div
+                    id="clientesActivos"
+                >
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<script
+    type="module"
+    src="js/admin.js">
+</script>
+
+</body>
+
+</html>
