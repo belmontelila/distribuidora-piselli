@@ -7,22 +7,26 @@ const productsPerPage = 20;
 
 const products = [];
 
-        // Initialize
-        document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
 
     cargarProductosExcel();
 
-    if(clienteLogueado){
+    if (clienteLogueado) {
 
-        document.getElementById("pedidosLink").style.display = "inline-block";
+        const pedidosLink = document.getElementById("pedidosLink");
 
+        if (pedidosLink) {
+            pedidosLink.style.display = "inline-block";
+        }
+
+        const listasLink = document.getElementById("listasLink");
+
+        if (listasLink) {
+            listasLink.style.display = "inline-block";
+        }
     }
 
 });
-       document.addEventListener('DOMContentLoaded', () => {
-        cargarProductosExcel();
-        });
-
       function renderProducts(list = products) {
 
     const grid = document.getElementById('productsGrid');
@@ -98,18 +102,31 @@ const products = [];
         .scrollIntoView({ behavior: "smooth" });
 }
            
-function filtrarRubro(rubro){
+function filtrarRubro(rubro) {
 
-    if(rubro === ""){
+    const rubroBuscado = String(rubro || "")
+        .toLowerCase()
+        .trim()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+
+    if (rubroBuscado === "") {
 
         currentList = products;
 
     } else {
 
-        currentList = products.filter(product =>
-            product.rubro &&
-            product.rubro.toLowerCase() === rubro.toLowerCase()
-        );
+        currentList = products.filter(product => {
+
+            const rubroProducto = String(product.rubro || "")
+                .toLowerCase()
+                .trim()
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "");
+
+            return rubroProducto === rubroBuscado;
+
+        });
 
     }
 
@@ -117,15 +134,14 @@ function filtrarRubro(rubro){
 
     renderProducts(currentList);
 
-    document.getElementById("catalogo").scrollIntoView({
-        behavior: "smooth"
-    });
+    const catalogo = document.getElementById("catalogo");
+
+    if (catalogo) {
+        catalogo.scrollIntoView({
+            behavior: "smooth"
+        });
+    }
 }
-
-    currentPage = 1;
-
-    renderProducts(currentList);
-
         // Login Modal
         function openLoginModal() {
             document.getElementById('loginModal').classList.add('active');
@@ -341,15 +357,20 @@ function changePage(page){
 
 function searchProducts() {
 
-    const text = document.getElementById("searchInput")
-        .value
-        .toLowerCase()
-        .trim();
+    const input = document.getElementById("searchInput");
 
-    if(text === ""){
+    if (!input) return;
+
+    const text = input.value
+        .toLowerCase()
+        .trim()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+
+    // Si el buscador está vacío, mostrar todos
+    if (text === "") {
 
         currentList = products;
-
         currentPage = 1;
 
         renderProducts(currentList);
@@ -357,21 +378,32 @@ function searchProducts() {
         return;
     }
 
-    currentList = products.filter(p => {
+    // Buscar por nombre, marca, código o rubro
+    currentList = products.filter(product => {
 
-        const nombre = (p.name || "").toLowerCase();
-        const marca = (p.marca || "").toLowerCase();
-        const codigo = String(p.code || "").toLowerCase();
-        const rubro = (p.rubro || "")
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "");
+        const nombre = String(product.name || "")
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "");
+
+        const marca = String(product.marca || "")
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "");
+
+        const codigo = String(product.code || "")
+            .toLowerCase();
+
+        const rubro = String(product.rubro || "")
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "");
 
         return (
-        nombre.includes(text) ||
-        marca.includes(text) ||
-        codigo.includes(text) ||
-        rubro.includes(text)
+            nombre.includes(text) ||
+            marca.includes(text) ||
+            codigo.includes(text) ||
+            rubro.includes(text)
         );
 
     });
