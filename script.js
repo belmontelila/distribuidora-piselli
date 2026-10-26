@@ -416,8 +416,20 @@ function searchProducts() {
 function getProductImage(product){ return `img/productos/${product.code}.jpg`; }
 
 
+
 function toggleMenu() {
-    document.querySelector(".nav").classList.toggle("active");
+    const menu = document.querySelector(".nav");
+    const boton = document.querySelector(".mobile-menu-btn");
+
+    if (!menu) return;
+
+    menu.classList.toggle("active");
+
+    if (boton) {
+        const abierto = menu.classList.contains("active");
+        boton.setAttribute("aria-expanded", abierto);
+        boton.textContent = abierto ? "✕" : "☰";
+    }
 }
 
 document.querySelectorAll(".nav a").forEach(function(enlace) {
