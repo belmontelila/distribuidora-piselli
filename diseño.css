@@ -1007,3 +1007,16 @@ border-color:#1e3a5f;
     line-height: 1.7;
 }
 
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    width: 150px !important;
+    height: auto !important;
+    max-width: none !important;
+    max-height: none !important;
+    object-fit: contain;
+    display: block;
+}
