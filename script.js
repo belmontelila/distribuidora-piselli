@@ -415,13 +415,17 @@ function searchProducts() {
 
 function getProductImage(product){ return `img/productos/${product.code}.jpg`; }
 
-function toggleMenu(){
 
-    document
-        .querySelector(".nav")
-        .classList.toggle("active");
-
+function toggleMenu() {
+    document.querySelector(".nav").classList.toggle("active");
 }
+
+document.querySelectorAll(".nav a").forEach(function(enlace) {
+    enlace.addEventListener("click", function() {
+        document.querySelector(".nav").classList.remove("active");
+    });
+});
+
 
 window.addEventListener("DOMContentLoaded", () => {
 
